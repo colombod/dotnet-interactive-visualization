@@ -1,0 +1,11 @@
+#!csharp
+
+#i "nuget:C:\Users\dicolomb\source\repos\Public\dataframe-sanddance\src\Microsoft.DotNet.Interactive.SandDance.nuget\bin\Debug"
+
+#!csharp
+
+#r "nuget:Microsoft.DotNet.Interactive.SandDance.Explorer"
+
+#!csharp
+
+using Microsoft.DotNet.Interactive.SandDance;

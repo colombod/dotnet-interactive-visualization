@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{85C45568-FD74-4A0B-91AA-8EA583468DF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InteractiveExtensions", "InteractiveExtensions", "{9CC72017-3955-46C9-9626-71E65B31C84F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{1725FA44-2487-422C-A3E9-FD3760C5A9B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.SandDance", "src\Microsoft.DotNet.Interactive.SandDance\Microsoft.DotNet.Interactive.SandDance.csproj", "{6A7543B9-1E59-432B-B350-B2142E748B81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.SandDance.Extension", "src\Microsoft.DotNet.Interactive.SandDance.Extension\Microsoft.DotNet.Interactive.SandDance.Extension.csproj", "{492081D0-68EB-4395-880C-C8F5257D60C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{752EB2D8-179F-4D34-965A-3ABD9F1DC236}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.SandDance.nuget", "src\Microsoft.DotNet.Interactive.SandDance.nuget\Microsoft.DotNet.Interactive.SandDance.nuget.csproj", "{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.SandDance.Extension.Tests", "src\Microsoft.DotNet.Interactive.SandDance.Extension.Tests\Microsoft.DotNet.Interactive.SandDance.Extension.Tests.csproj", "{41870309-6145-43DD-9C58-49869CC94C95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A7543B9-1E59-432B-B350-B2142E748B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7543B9-1E59-432B-B350-B2142E748B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7543B9-1E59-432B-B350-B2142E748B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7543B9-1E59-432B-B350-B2142E748B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492081D0-68EB-4395-880C-C8F5257D60C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492081D0-68EB-4395-880C-C8F5257D60C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492081D0-68EB-4395-880C-C8F5257D60C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492081D0-68EB-4395-880C-C8F5257D60C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41870309-6145-43DD-9C58-49869CC94C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41870309-6145-43DD-9C58-49869CC94C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41870309-6145-43DD-9C58-49869CC94C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41870309-6145-43DD-9C58-49869CC94C95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A7543B9-1E59-432B-B350-B2142E748B81} = {85C45568-FD74-4A0B-91AA-8EA583468DF2}
+		{492081D0-68EB-4395-880C-C8F5257D60C2} = {9CC72017-3955-46C9-9626-71E65B31C84F}
+		{D1EA9C70-DD6C-4E25-8B84-66C5D1E48C00} = {1725FA44-2487-422C-A3E9-FD3760C5A9B0}
+		{41870309-6145-43DD-9C58-49869CC94C95} = {752EB2D8-179F-4D34-965A-3ABD9F1DC236}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAB02A3F-A1A3-4CE8-9C26-08764B6D4209}
+	EndGlobalSection
+EndGlobal

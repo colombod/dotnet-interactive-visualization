@@ -1,0 +1,61 @@
+{
+  "name": "microsoft.dotnet-interactive.sanddance",
+  "version": "1.0.0",
+  "description": "api to create sandDance explorer and viewer",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib/**/*.js",
+    "dist/*.js",
+    "css/*.css"
+  ],
+  "scripts": {
+    "build:lib": "tsc",
+    "build:extension": "webpack -p",
+    "build": "npm run build:extension",
+    "clean:lib": "rimraf lib",
+    "prepack": "npm run build:lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colombod/dataframe-sanddance.git"
+  },
+  "author": "Diego Colombo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/colombod/dataframe-sanddance/issues"
+  },
+  "homepage": "https://github.com/colombod/dataframe-sanddance#readme",
+  "dependencies": {
+    "@deck.gl/core": "^8.1.5",
+    "@deck.gl/layers": "^8.1.5",
+    "@fluentui/react": "^7.111.0",
+    "@luma.gl/core": "^8.1.2",
+    "@msrvida/sanddance-explorer": "3.0.0-beta.2",
+    "@msrvida/sanddance-react": "3.0.0-beta.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "vega": "^5.11"
+  },
+  "devDependencies": {
+    "@msrvida/fluentui-react-cdn-typings": "^1",
+    "@types/expect.js": "^0.3.29",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.6",
+    "@types/react-dom": "^16.9.8",
+    "@types/webpack-env": "^1.13.6",
+    "css-loader": "^3.2.0",
+    "fs-extra": "^7.0.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^5.2.1",
+    "typescript": "3.9.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}

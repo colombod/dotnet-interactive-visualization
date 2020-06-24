@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <PackageId>Microsoft.DotNet.Interactive.SandDance.Explorer</PackageId>
+    <IsPackable>true</IsPackable>
+    <PackageDescription>SandDance data explorer for .NET interactive.</PackageDescription>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../Microsoft.DotNet.Interactive.SandDance/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.SandDance.dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
+    <None Include="../Microsoft.DotNet.Interactive.SandDance.Extension/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.SandDance.Extension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+  </ItemGroup>
+
+</Project>
