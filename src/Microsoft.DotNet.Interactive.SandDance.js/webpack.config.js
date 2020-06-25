@@ -22,7 +22,8 @@ module.exports = [
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'dist'),
-      libraryTarget: 'umd'
+      libraryTarget: 'umd',
+      library: 'interactiveSandDance',
     },
     module: {
       rules: rules
@@ -39,8 +40,9 @@ module.exports = [
     entry: './src/index.ts',
     output: {
       filename: 'lib.js',
-      path: path.resolve(__dirname, 'dist'),
-      libraryTarget: 'commonjs'
+      path: path.resolve(__dirname, 'dist'),      
+      library: 'interactiveSandDance',
+      libraryTarget: 'umd',
     },
     module: {
       rules: rules
@@ -51,31 +53,5 @@ module.exports = [
     optimization: {
       minimize: true
     }
-  },
-
-
-  /**
-   * Documentation widget bundle
-   *
-   * This bundle is used to embed widgets in the package documentation.
-   */
-  {
-    entry: './src/index.ts',
-    output: {
-      filename: 'embed-bundle.js',
-      path: path.resolve(__dirname, 'docs', 'source', '_static'),
-      library: "@microsoft/sanddance-interactive",
-      libraryTarget: 'amd'
-    },
-    module: {
-      rules: rules
-    },
-    devtool: 'source-map',
-    externals,
-    resolve,
-    optimization: {
-      minimize: false
-    }
   }
-
 ];

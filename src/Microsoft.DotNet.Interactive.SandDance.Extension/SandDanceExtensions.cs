@@ -13,7 +13,7 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
         static SandDanceExtensions()
         {
             var assembly = typeof(SandDanceExtensions).Assembly;
-            using var resourceStream = assembly.GetManifestResourceStream($"{typeof(SandDanceExtensions).Namespace}.resources.index.js");
+            using var resourceStream = assembly.GetManifestResourceStream($"{typeof(SandDanceExtensions).Namespace}.resources.lib.js");
             if (resourceStream != null)
             {
                 using var textStream = new StreamReader(resourceStream);
