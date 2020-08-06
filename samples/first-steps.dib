@@ -4,8 +4,58 @@
 
 #!csharp
 
-#r "nuget:Microsoft.DotNet.Interactive.SandDance.Explorer"
+#r "nuget:Microsoft.DotNet.Interactive.SandDance.Explorer,1.1.1"
 
 #!csharp
 
 using Microsoft.DotNet.Interactive.SandDance;
+
+#!csharp
+
+var aaaaaabbbaa = 12;
+
+#!csharp
+
+Console.WriteLine(123123123);
+
+#!csharp
+
+var b = 123455;
+var a = "jrhrhr";
+var g = 123;
+
+#!csharp
+
+Console.WriteLine(a);
+
+#!csharp
+
+var jon = new { Name = "hello" };
+
+#!csharp
+
+var diego = new { Name = "Diego", AwesomeFriend = jon };
+
+#!csharp
+
+jon
+
+#!fsharp
+
+let fileInfo = new System.IO.FileInfo("temp.file")
+
+#!fsharp
+
+Console.OutputEncoding.
+
+#!csharp
+
+var fileInfo = new System.IO.FileInfo("stuff.txt");
+
+#!csharp
+
+var fileInfo = new System.IO.FileInfo("stu.txt");
+
+#!csharp
+
+fileInfo

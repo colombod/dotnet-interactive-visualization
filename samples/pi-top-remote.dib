@@ -1,0 +1,23 @@
+#!csharp
+
+#!connect signalr --kernel-name piTop --hub-url http://pitop-interactive.ngrok.io/kernelhub
+
+#!csharp
+
+#!piTop
+#!who
+
+#!csharp
+
+#!piTop
+greenLed.Toggle()
+
+#!csharp
+
+#!piTop
+var ultraSound = plate.GetOrCreateDevice<UltrasonicSensor>(DigitalPort.D3);
+
+#!csharp
+
+#!piTop
+ultraS
