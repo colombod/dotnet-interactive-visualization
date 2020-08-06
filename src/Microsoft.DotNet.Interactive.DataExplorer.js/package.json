@@ -1,7 +1,7 @@
 {
-  "name": "microsoft.dotnet-interactive.sanddance",
+  "name": "microsoft.dotnet-interactive.dataexplorer",
   "version": "1.0.0",
-  "description": "api to create sandDance explorer and viewer",
+  "description": "api to create nteract dataexplorer",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -28,15 +28,9 @@
   },
   "homepage": "https://github.com/colombod/dotnet-interactive-visualization#readme",
   "dependencies": {
-    "@deck.gl/core": "^8.1.5",
-    "@deck.gl/layers": "^8.1.5",
-    "@fluentui/react": "^7.111.0",
-    "@luma.gl/core": "^8.1.2",
-    "@msrvida/sanddance-explorer": "3.0.0-beta.2",
-    "@msrvida/sanddance-react": "3.0.0-beta.2",
+    "@nteract/data-explorer": "^8.2.8",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "vega": "^5.11"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@msrvida/fluentui-react-cdn-typings": "^1",
