@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Microsoft.DotNet.Interactive.Formatting;
 
 using Xunit;
@@ -23,7 +24,7 @@ namespace Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests
                 new {Name = "T", IsValid =false, Cost=10.0}
             };
 
-            var formattedData = data.ToDisplayString(TableFormatter.MimeType);
+            var formattedData = ((IEnumerable)data).ToDisplayString(TableFormatter.MimeType);
             throw new NotImplementedException();
         }
 

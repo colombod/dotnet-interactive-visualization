@@ -19,14 +19,12 @@ namespace Microsoft.DotNet.Interactive.DataExplorer.Extension
 
         public static void RegisterFormatters()
         {
-            Formatter.Register<IEnumerable>((enumerable, writer) =>
+            Formatter<IEnumerable>.Register((enumerable, writer) =>
            {
                var tabularData = ToTabularData(enumerable);
 
                writer.Write(tabularData.ToString(formatting: Newtonsoft.Json.Formatting.Indented));
            }, TableFormatter.MimeType);
-
-
         }
 
         private static JObject ToTabularData(IEnumerable enumerable)
@@ -75,34 +73,15 @@ namespace Microsoft.DotNet.Interactive.DataExplorer.Extension
 
         private static string ToTableFieldType(Type propertyType)
         {
-
-            if (propertyType == typeof(string))
+            return propertyType switch
             {
-                return "string";
-            }
-
-            if (propertyType == typeof(bool))
-            {
-                return "boolean";
-            }
-
-            if (propertyType == typeof(DateTime))
-            {
-                return "date";
-            }
-
-            if (propertyType == typeof(int))
-            {
-                return "integer";
-            }
-
-            if (propertyType == typeof(double))
-            {
-                return "number";
-            }
-
-            throw new InvalidOperationException($"Type {propertyType} is not supported.");
-
+                { } t when t == typeof(string) => "string",
+                { } t when t == typeof(bool) => "boolean",
+                { } t when t == typeof(DateTime) => "date",
+                { } t when t == typeof(int) => "integer",
+                { } t when t == typeof(double) => "number",
+                _ => throw new InvalidOperationException($"Type {propertyType} is not supported.")
+            };
         }
     }
 }
