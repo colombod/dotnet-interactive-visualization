@@ -32,6 +32,10 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.DataExplorer.csproj" />
+  </ItemGroup>
+
   <Target Name="InstallNodeModules">
     <Exec Command="npm i" WorkingDirectory="$(JsApiRoot)" />
   </Target>

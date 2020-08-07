@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections;
-
-namespace Microsoft.DotNet.Interactive.DataExplorer
+﻿namespace Microsoft.DotNet.Interactive.DataExplorer
 {
-    public class DataExplorer
+    public static class TableFormatter
     {
-        private readonly Func<IEnumerable> _dataRowsGenerator;
-
-        public DataExplorer(Func<IEnumerable> dataRowsGenerator)
-        {
-            _dataRowsGenerator = dataRowsGenerator ?? throw new ArgumentNullException(nameof(dataRowsGenerator));
-        }
-
-        public IEnumerable GetData()
-        {
-            return _dataRowsGenerator();
-        }
+        public static string MimeType => "application/table-schema+json";
     }
 }
