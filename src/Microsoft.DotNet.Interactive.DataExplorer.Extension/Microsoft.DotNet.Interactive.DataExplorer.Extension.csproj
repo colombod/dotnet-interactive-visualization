@@ -5,22 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.Interactive.CSharp" Version="1.0.0-beta.20406.1" />
     <PackageReference Include="Microsoft.DotNet.Interactive" Version="1.0.0-beta.20406.1" />
     <PackageReference Include="Microsoft.DotNet.Interactive.Formatting" Version="1.0.0-beta.20406.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.SandDance\Microsoft.DotNet.Interactive.SandDance.csproj" />
-  </ItemGroup>
 
   <PropertyGroup>
-    <JsApiRoot>$(MSBuildThisFileDirectory)/../Microsoft.DotNet.Interactive.SandDance.js/</JsApiRoot>
+    <JsApiRoot>$(MSBuildThisFileDirectory)/../Microsoft.DotNet.Interactive.DataExplorer.js/</JsApiRoot>
   </PropertyGroup>
 
   <ItemGroup>
     <TypescriptInputs Include="$(JsApiRoot)package.json" />
-    <TypescriptInputs Include="$(JsApiRoot)package-lock.json" />    
+    <TypescriptInputs Include="$(JsApiRoot)package-lock.json" />
     <TypescriptInputs Include="$(JsApiRoot)tsconfig.json" />
     <TypescriptInputs Include="$(JsApiRoot)webpack.config.js" />
     <TypescriptInputs Include="$(JsApiRoot)src/**/*.ts" />
@@ -43,6 +39,5 @@
   <Target Name="CompileTypescript" Inputs="@(TypescriptInputs)" Outputs="@(TypescriptOutputFiles)" DependsOnTargets="InstallNodeModules" BeforeTargets="BeforeBuild" Condition="'$(NCrunch)' != '1' And '$(BuildingInsideVisualStudio)' != 'true'">
     <Exec Command="npm run build" WorkingDirectory="$(JsApiRoot)" />
   </Target>
-
 
 </Project>

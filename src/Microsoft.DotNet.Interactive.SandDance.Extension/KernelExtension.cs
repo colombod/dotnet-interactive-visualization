@@ -7,7 +7,7 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
     {
         public Task OnLoadAsync(Kernel kernel)
         {
-            SandDanceExtensions.RegisterFormatters();
+          
 
             switch (kernel)
             {

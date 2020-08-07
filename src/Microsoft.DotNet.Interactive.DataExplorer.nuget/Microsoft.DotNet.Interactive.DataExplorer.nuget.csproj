@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
 
-    <PackageId>Microsoft.DotNet.Interactive.SandDance</PackageId>
+    <PackageId>Microsoft.DotNet.Interactive.DataExplorer</PackageId>
     <IsPackable>true</IsPackable>
     <PackageDescription>SandDance data explorer for .NET interactive.</PackageDescription>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -18,15 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../Microsoft.DotNet.Interactive.SandDance/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.SandDance.dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
-    <None Include="../Microsoft.DotNet.Interactive.SandDance.Extension/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.SandDance.Extension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+    <None Include="../Microsoft.DotNet.Interactive.DataExplorer/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.DataExplorer.dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
+    <None Include="../Microsoft.DotNet.Interactive.DataExplorer.Extension/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.DataExplorer.Extension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.SandDance.Extension\Microsoft.DotNet.Interactive.SandDance.Extension.csproj">
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer.Extension\Microsoft.DotNet.Interactive.DataExplorer.Extension.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.SandDance\Microsoft.DotNet.Interactive.SandDance.csproj">
+    <ProjectReference Include="..\src\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.DataExplorer.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

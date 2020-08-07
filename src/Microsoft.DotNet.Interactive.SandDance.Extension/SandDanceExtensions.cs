@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Microsoft.DotNet.Interactive.CSharp;
+
 using Microsoft.DotNet.Interactive.Formatting;
 
 namespace Microsoft.DotNet.Interactive.SandDance.Extension
@@ -52,9 +52,9 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
             return code.ToString();
         }
 
-        public static CSharpKernel UseSandDance(this CSharpKernel kernel)
+        public static T UseSandDance<T>(this T kernel) where T : Kernel
         {
-
+            RegisterFormatters();
             return kernel;
         }
     }

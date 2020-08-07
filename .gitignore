@@ -349,6 +349,14 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+src/Microsoft.DotNet.Interactive.SandDance.js/lib/
+
 src/Microsoft.DotNet.Interactive.SandDance.js/dist/
 
 src/Microsoft.DotNet.Interactive.SandDance.js/docs/
+
+src/Microsoft.DotNet.Interactive.DataExplorer.js/lib/
+
+src/Microsoft.DotNet.Interactive.DataExplorer.js/dist/
+
+src/Microsoft.DotNet.Interactive.DataExplorer.js/docs/
