@@ -24,6 +24,11 @@ namespace Microsoft.DotNet.Interactive.DataExplorer
             return tabularData;
         }
 
+        public static Explorer Explore(this IEnumerable source)
+        {
+            return new Explorer(source);
+        }
+
         private static (JObject schema, JArray data) Generate(IEnumerable source)
         {
             var fields = new JArray();

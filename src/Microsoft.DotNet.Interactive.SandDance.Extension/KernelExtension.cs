@@ -7,8 +7,6 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
     {
         public Task OnLoadAsync(Kernel kernel)
         {
-          
-
             switch (kernel)
             {
                 case CSharpKernel cSharpKernel:
