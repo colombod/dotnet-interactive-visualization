@@ -30,15 +30,13 @@ namespace Microsoft.DotNet.Interactive.DataExplorer.Extension
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
             code.AppendLine("</div>");
-            code.AppendLine("<script type=\"text/javascript\">");
-            code.AppendLine(_libCode);
-            code.AppendLine("</script>");
-
-            code.AppendLine("<script type=\"text/javascript\">");
-            code.AppendLine($@"let data = {data};");
+            code.AppendLine(@"<script type=\=""text/javascript"">
+dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/dataexplorer/lib.js', (interactiveDataExplorer) => {");
+            code.AppendLine($@" let data = {data};");
             code.AppendLine($@" let viewer = interactiveDataExplorer.createDataExplorer({{
-    data: data,
-    container: document.getElementById(""{divId}"")
+        data: data,
+        container: document.getElementById(""{divId}"")
+    }});
 }});");
             code.AppendLine(" </script>");
             code.AppendLine("</div>");

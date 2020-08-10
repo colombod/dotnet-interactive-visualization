@@ -37,13 +37,11 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
             code.AppendLine("</div>");
-            code.AppendLine("<script type=\"text/javascript\">");
-            code.AppendLine(_sandDanceCode);
-            code.AppendLine("</script>");
-
-            code.AppendLine("<script type=\"text/javascript\">");
-            code.AppendLine($@"let viewer = createSandDance(document.getElementById(""{divId}""), ""explorer"");");
-            code.AppendLine($@"viewer.loadData({data});");
+            code.AppendLine(@"<script type=\=""text/javascript"">
+dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/sanddance/lib.js', (interactiveSandDance) => {");
+            code.AppendLine($@" let viewer = interactiveSandDance.createSandDance(document.getElementById(""{divId}""), ""explorer"");");
+            code.AppendLine($@" viewer.loadData({data});
+}});");
             code.AppendLine(" </script>");
 
             code.AppendLine("</div>");

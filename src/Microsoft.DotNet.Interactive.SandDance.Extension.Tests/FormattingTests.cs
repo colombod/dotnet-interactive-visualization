@@ -34,7 +34,7 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension.Tests
 
             var scripts = htmlDoc.DocumentNode.SelectNodes("//div/script");
 
-            scripts.Count.Should().Be(2);
+            scripts.Count.Should().Be(1);
 
         }
     }
