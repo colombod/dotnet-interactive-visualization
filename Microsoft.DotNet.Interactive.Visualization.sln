@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactiv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.SandDance.Extension.Tests", "src\Microsoft.DotNet.Interactive.SandDance.Extension.Tests\Microsoft.DotNet.Interactive.SandDance.Extension.Tests.csproj", "{41870309-6145-43DD-9C58-49869CC94C95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.DataExplorer", "src\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.DataExplorer.csproj", "{8C416B60-9D35-4C75-BECC-E6F6FF3D5920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.nteract", "src\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.nteract.csproj", "{8C416B60-9D35-4C75-BECC-E6F6FF3D5920}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.DataExplorer.Extension", "src\Microsoft.DotNet.Interactive.DataExplorer.Extension\Microsoft.DotNet.Interactive.DataExplorer.Extension.csproj", "{8D1CC73B-872F-4460-90CE-79424C6DA619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.nteract.Extension", "src\Microsoft.DotNet.Interactive.DataExplorer.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj", "{8D1CC73B-872F-4460-90CE-79424C6DA619}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.DataExplorer.nuget", "src\Microsoft.DotNet.Interactive.DataExplorer.nuget\Microsoft.DotNet.Interactive.DataExplorer.nuget.csproj", "{B72551B0-44E8-4AD5-99EB-C746FA95C107}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.nteract.nuget", "src\Microsoft.DotNet.Interactive.DataExplorer.nuget\Microsoft.DotNet.Interactive.nteract.nuget.csproj", "{B72551B0-44E8-4AD5-99EB-C746FA95C107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests", "src\Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests\Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests.csproj", "{CB10E4EF-39FE-46BC-BC26-2E2A13F12EB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.DotNet.Interactive.nteract.Extension.Tests", "src\Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests\Microsoft.DotNet.Interactive.nteract.Extension.Tests.csproj", "{CB10E4EF-39FE-46BC-BC26-2E2A13F12EB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

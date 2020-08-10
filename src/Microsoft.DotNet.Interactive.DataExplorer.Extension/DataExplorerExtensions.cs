@@ -1,31 +1,16 @@
 ﻿using System;
 using System.Collections;
-using System.IO;
 using System.Text;
-
 using Microsoft.DotNet.Interactive.Formatting;
 
-namespace Microsoft.DotNet.Interactive.DataExplorer.Extension
+namespace Microsoft.DotNet.Interactive.nteract.Extension
 {
     internal static class ExplorerExtensions
     {
-        private static readonly string _libCode;
-
-        static ExplorerExtensions()
-        {
-            var assembly = typeof(ExplorerExtensions).Assembly;
-            using var resourceStream = assembly.GetManifestResourceStream($"{typeof(ExplorerExtensions).Namespace}.resources.lib.js");
-            if (resourceStream != null)
-            {
-                using var textStream = new StreamReader(resourceStream);
-                _libCode = textStream.ReadToEnd();
-            }
-        }
-
-        internal static string GenerateHtml(this Explorer explorer)
+        internal static string GenerateHtml(this nteract.DataExplorer dataExplorer)
         {
             var divId = Guid.NewGuid().ToString("N");
-            var data = explorer.Source.ToTabularData().ToString(Newtonsoft.Json.Formatting.None);
+            var data = dataExplorer.Data.ToTabularData().ToString();
             var code = new StringBuilder();
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
@@ -53,14 +38,20 @@ dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/dataexplorer/l
 
         public static void RegisterFormatters()
         {
-            Formatter<IEnumerable>.Register((enumerable, writer) =>
-           {
-               var tabularData = enumerable.ToTabularData();
+            Formatter.Register(
+                typeof(IEnumerable),
+                (source, writer) =>
+                {
+                    if (source.GetType() != typeof(string))
+                    {
+                        var tabularData = ((IEnumerable)source).ToTabularData();
+                        writer.Write(tabularData.ToString());
+                    }
+                },
+                TableFormatter.MimeType
+            );
 
-               writer.Write(tabularData.ToString(formatting: Newtonsoft.Json.Formatting.Indented));
-           }, TableFormatter.MimeType);
-
-            Formatter<Explorer>.Register((explorer, writer) =>
+            Formatter<DataExplorer>.Register((explorer, writer) =>
             {
                 var html = explorer.GenerateHtml();
                 writer.Write(html);

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.DotNet.Interactive.CSharp;
 
-namespace Microsoft.DotNet.Interactive.DataExplorer.Extension
+namespace Microsoft.DotNet.Interactive.nteract.Extension
 {
     public class KernelExtension : IKernelExtension
     {

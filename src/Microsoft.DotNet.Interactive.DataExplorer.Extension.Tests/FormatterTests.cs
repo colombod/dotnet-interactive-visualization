@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Diagnostics;
 using Assent;
-using FluentAssertions;
 using Microsoft.DotNet.Interactive.Formatting;
-
 using Xunit;
 
-namespace Microsoft.DotNet.Interactive.DataExplorer.Extension.Tests
+namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
 {
     public class FormatterTests : IDisposable
     {
