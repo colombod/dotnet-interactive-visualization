@@ -17,8 +17,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj" />
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.nteract.csproj" />
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj" />
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract\Microsoft.DotNet.Interactive.nteract.csproj" />
   </ItemGroup>
 
 </Project>

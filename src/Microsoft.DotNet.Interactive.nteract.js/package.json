@@ -1,5 +1,5 @@
 {
-  "name": "microsoft.dotnet-interactive.dataexplorer",
+  "name": "microsoft.dotnet.interactive.nteract.dataexplorer",
   "version": "1.0.0",
   "description": "api to create nteract dataexplorer",
   "main": "lib/index.js",

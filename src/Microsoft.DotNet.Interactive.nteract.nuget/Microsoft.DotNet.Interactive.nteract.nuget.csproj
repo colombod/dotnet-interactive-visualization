@@ -18,15 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../Microsoft.DotNet.Interactive.DataExplorer/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.nteract.dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
-    <None Include="../Microsoft.DotNet.Interactive.DataExplorer.Extension/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.nteract.Extension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
+    <None Include="../Microsoft.DotNet.Interactive.nteract/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.nteract.dll" Pack="true" PackagePath="lib/$(TargetFramework)" />
+    <None Include="../Microsoft.DotNet.Interactive.nteract.Extension/bin/$(Configuration)/$(TargetFramework)/Microsoft.DotNet.Interactive.nteract.Extension.dll" Pack="true" PackagePath="interactive-extensions/dotnet" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj">
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\src\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.nteract.csproj">
+    <ProjectReference Include="..\src\Microsoft.DotNet.Interactive.nteract\Microsoft.DotNet.Interactive.nteract.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

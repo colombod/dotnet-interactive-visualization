@@ -23,7 +23,7 @@ module.exports = [
       filename: 'index.js',
       path: path.resolve(__dirname, 'dist'),
       libraryTarget: 'umd',
-      library: 'interactiveDataExplorer',
+      library: 'nteract',
     },
     module: {
       rules: rules
@@ -41,7 +41,7 @@ module.exports = [
     output: {
       filename: 'lib.js',
       path: path.resolve(__dirname, 'dist'),      
-      library: 'interactiveDataExplorer',
+      library: 'nteract',
       libraryTarget: 'umd',
     },
     module: {

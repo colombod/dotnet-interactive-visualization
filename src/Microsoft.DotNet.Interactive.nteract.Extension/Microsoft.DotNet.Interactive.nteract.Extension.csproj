@@ -11,7 +11,7 @@
 
 
   <PropertyGroup>
-    <JsApiRoot>$(MSBuildThisFileDirectory)/../Microsoft.DotNet.Interactive.DataExplorer.js/</JsApiRoot>
+    <JsApiRoot>$(MSBuildThisFileDirectory)/../Microsoft.DotNet.Interactive.nteract.js/</JsApiRoot>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DotNet.Interactive.DataExplorer\Microsoft.DotNet.Interactive.nteract.csproj" />
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract\Microsoft.DotNet.Interactive.nteract.csproj" />
   </ItemGroup>
 
   <Target Name="InstallNodeModules">
