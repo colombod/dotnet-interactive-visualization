@@ -13,7 +13,7 @@ const externals = ['@jupyter-widgets/base'];
 
 const resolve = {
   // Add '.ts' and '.tsx' as resolvable extensions.
-  extensions: [".webpack.js", ".web.js", ".ts", ".js"]
+  extensions: [".webpack.js", ".web.js", ".ts", ".tsx",".js",".jsx"]
 };
 
 module.exports = [
@@ -24,6 +24,7 @@ module.exports = [
       path: path.resolve(__dirname, 'dist'),
       libraryTarget: 'umd',
       library: 'nteract',
+      globalObject: 'this'
     },
     module: {
       rules: rules
@@ -43,6 +44,7 @@ module.exports = [
       path: path.resolve(__dirname, 'dist'),      
       library: 'nteract',
       libraryTarget: 'umd',
+      globalObject: 'this',    
     },
     module: {
       rules: rules
@@ -51,7 +53,7 @@ module.exports = [
     externals,
     resolve,
     optimization: {
-      minimize: true
+      minimize: false
     }
   }
 ];

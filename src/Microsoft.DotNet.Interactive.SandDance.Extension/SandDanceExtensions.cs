@@ -6,20 +6,9 @@ using Microsoft.DotNet.Interactive.Formatting;
 
 namespace Microsoft.DotNet.Interactive.SandDance.Extension
 {
-    public static class SandDanceExtensions
+    public static class SandDanceExtensions 
     {
-        private static readonly string _sandDanceCode;
 
-        static SandDanceExtensions()
-        {
-            var assembly = typeof(SandDanceExtensions).Assembly;
-            using var resourceStream = assembly.GetManifestResourceStream($"{typeof(SandDanceExtensions).Namespace}.resources.lib.js");
-            if (resourceStream != null)
-            {
-                using var textStream = new StreamReader(resourceStream);
-                _sandDanceCode = textStream.ReadToEnd();
-            }
-        }
         public static void RegisterFormatters()
         {
             Formatter<DataExplorer>.Register((explorer, writer) =>
@@ -37,8 +26,8 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
             code.AppendLine("</div>");
-            code.AppendLine(@"<script type=\=""text/javascript"">
-dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/sanddance/lib.js', (interactiveSandDance) => {");
+            code.AppendLine(@"<script type=""text/javascript"">
+dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/sanddance/lib', (interactiveSandDance) => {");
             code.AppendLine($@" let viewer = interactiveSandDance.createSandDance(document.getElementById(""{divId}""), ""explorer"");");
             code.AppendLine($@" viewer.loadData({data});
 }});");

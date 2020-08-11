@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Text;
+using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive.Formatting;
 
 namespace Microsoft.DotNet.Interactive.nteract.Extension
 {
     internal static class ExplorerExtensions
     {
-        internal static string GenerateHtml(this nteract.DataExplorer dataExplorer)
+        internal static HtmlString GenerateHtml(this nteract.DataExplorer dataExplorer)
         {
             var divId = Guid.NewGuid().ToString("N");
             var data = dataExplorer.Data.ToTabularData().ToString();
@@ -15,17 +16,20 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
             code.AppendLine("</div>");
-            code.AppendLine(@"<script type=\=""text/javascript"">
-dotnetInteractiveExtensionsRequire('dotnet-interactive-extensions/nteract/resources/lib.js', (nteract) => {");
+            code.AppendLine(@"<script type=""text/javascript"">
+dotnetInteractiveExtensionsRequire(['dotnet-interactive-extensions/nteract/resources/lib'], (nteract) => {");
             code.AppendLine($@" let data = {data};");
             code.AppendLine($@" let viewer = nteract.createDataExplorer({{
         data: data,
         container: document.getElementById(""{divId}"")
     }});
+}},
+(error) => {{ 
+    console.log(error); 
 }});");
             code.AppendLine(" </script>");
             code.AppendLine("</div>");
-            return code.ToString();
+            return new HtmlString(code.ToString());
         }
     }
     public static class DataExplorerExtensions

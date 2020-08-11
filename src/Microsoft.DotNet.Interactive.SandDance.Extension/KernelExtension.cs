@@ -3,7 +3,7 @@ using Microsoft.DotNet.Interactive.CSharp;
 
 namespace Microsoft.DotNet.Interactive.SandDance.Extension
 {
-    public class KernelExtension : IKernelExtension
+    public class KernelExtension : IKernelExtension, IStaticContentSource
     {
         public Task OnLoadAsync(Kernel kernel)
         {
@@ -16,5 +16,7 @@ namespace Microsoft.DotNet.Interactive.SandDance.Extension
 
             return Task.CompletedTask;
         }
+
+        public string Name => "sanddance";
     }
 }

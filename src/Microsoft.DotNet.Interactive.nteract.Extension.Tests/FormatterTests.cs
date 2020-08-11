@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using Assent;
+using FluentAssertions;
+using FluentAssertions.Execution;
+using HtmlAgilityPack;
 using Microsoft.DotNet.Interactive.Formatting;
 using Xunit;
 
@@ -68,10 +72,18 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
 
             var explorer = data.Explore();
 
-            var formattedData = explorer.ToDisplayString(HtmlFormatter.MimeType);
+            var formatted = explorer.ToDisplayString(HtmlFormatter.MimeType);
 
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(formatted);
 
-          throw new NotImplementedException();
+            var scripts = htmlDoc.DocumentNode.SelectNodes("//div/script").Single();
+
+            using var _ = new AssertionScope();
+            scripts.InnerText.Should().Contain(data.ToTabularData().ToString());
+
+            scripts.InnerText.Should().Contain("dotnetInteractiveExtensionsRequire(['dotnet-interactive-extensions/nteract/resources/lib'],");
+
         }
 
         public void Dispose()
