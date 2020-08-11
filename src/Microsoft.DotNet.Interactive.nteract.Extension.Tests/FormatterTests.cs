@@ -82,7 +82,7 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
             using var _ = new AssertionScope();
             scripts.InnerText.Should().Contain(data.ToTabularData().ToString());
 
-            scripts.InnerText.Should().Contain("dotnetInteractiveExtensionsRequire(['dotnet-interactive-extensions/nteract/resources/lib'],");
+            scripts.InnerText.Should().Contain("getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
 
         }
 

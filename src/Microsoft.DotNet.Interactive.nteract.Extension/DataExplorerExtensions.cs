@@ -17,7 +17,7 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");
             code.AppendLine("</div>");
             code.AppendLine(@"<script type=""text/javascript"">
-dotnetInteractiveExtensionsRequire(['dotnet-interactive-extensions/nteract/resources/lib'], (nteract) => {");
+getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
             code.AppendLine($@" let data = {data};");
             code.AppendLine($@" let viewer = nteract.createDataExplorer({{
         data: data,
