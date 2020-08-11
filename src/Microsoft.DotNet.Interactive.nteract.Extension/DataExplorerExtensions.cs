@@ -8,7 +8,7 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
 {
     internal static class ExplorerExtensions
     {
-        internal static HtmlString GenerateHtml(this nteract.DataExplorer dataExplorer)
+        internal static HtmlString GenerateHtml(this DataExplorer dataExplorer)
         {
             var divId = Guid.NewGuid().ToString("N");
             var data = dataExplorer.Data.ToTabularData().ToString();
@@ -53,6 +53,19 @@ dotnetInteractiveExtensionsRequire(['dotnet-interactive-extensions/nteract/resou
                     }
                 },
                 TableFormatter.MimeType
+            );
+
+            Formatter.Register(
+                typeof(IEnumerable),
+                (source, writer) =>
+                {
+                    if (source.GetType() != typeof(string))
+                    {
+                        var tabularData = ((IEnumerable)source).ToTabularData();
+                        writer.Write(tabularData.ToString());
+                    }
+                },
+                TableFormatter.nteractMimeType
             );
 
             Formatter<DataExplorer>.Register((explorer, writer) =>

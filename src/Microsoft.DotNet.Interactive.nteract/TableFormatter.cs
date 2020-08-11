@@ -12,6 +12,8 @@ namespace Microsoft.DotNet.Interactive.nteract
     {
         public static string MimeType => "application/table-schema+json";
 
+        public static string nteractMimeType => "application/vnd.dataresource+json";
+
         public static TabularJsonString ToTabularData(this IEnumerable enumerable)
         {
             var (schema, data) = Generate(enumerable);
