@@ -362,3 +362,5 @@ src/Microsoft.DotNet.Interactive.DataExplorer.js/dist/
 src/Microsoft.DotNet.Interactive.DataExplorer.js/docs/
 
 samples/.ipynb_checkpoints/
+
+src/Microsoft.DotNet.Interactive.nteract.js/dist/
