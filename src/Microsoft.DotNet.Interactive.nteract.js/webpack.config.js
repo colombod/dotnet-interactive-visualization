@@ -53,7 +53,7 @@ module.exports = [
     externals,
     resolve,
     optimization: {
-      minimize: false
+      minimize: true
     }
   }
 ];
