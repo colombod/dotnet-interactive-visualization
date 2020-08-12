@@ -9,6 +9,7 @@
     <IsPackable>true</IsPackable>
     <PackageDescription>nteract components for .NET interactive.</PackageDescription>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +27,7 @@
     <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract.Extension\Microsoft.DotNet.Interactive.nteract.Extension.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\src\Microsoft.DotNet.Interactive.nteract\Microsoft.DotNet.Interactive.nteract.csproj">
+    <ProjectReference Include="..\Microsoft.DotNet.Interactive.nteract\Microsoft.DotNet.Interactive.nteract.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
