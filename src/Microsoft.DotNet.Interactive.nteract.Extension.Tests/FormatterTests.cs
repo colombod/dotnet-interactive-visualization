@@ -70,7 +70,7 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
                 new {Name = "T", IsValid =false, Cost=10.0}
             };
 
-            var explorer = data.Explore();
+            var explorer = new DataExplorer(data);
 
             var formatted = explorer.ToDisplayString(HtmlFormatter.MimeType);
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Microsoft.DotNet.Interactive.Formatting;
 using Newtonsoft.Json.Linq;
 
 namespace Microsoft.DotNet.Interactive.nteract
@@ -27,9 +28,9 @@ namespace Microsoft.DotNet.Interactive.nteract
             return new TabularJsonString( tabularData.ToString(Newtonsoft.Json.Formatting.Indented) );
         }
 
-        public static nteract.DataExplorer Explore(this IEnumerable source)
+        public static void Explore(this IEnumerable source)
         {
-            return new DataExplorer(source);
+            KernelInvocationContext.Current.Display(new DataExplorer(source), HtmlFormatter.MimeType);
         }
 
         private static (JObject schema, JArray data) Generate(IEnumerable source)

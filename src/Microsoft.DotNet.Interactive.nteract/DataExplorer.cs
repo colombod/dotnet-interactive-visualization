@@ -6,7 +6,7 @@ namespace Microsoft.DotNet.Interactive.nteract
     {
         public IEnumerable Data { get; }
 
-        internal DataExplorer(IEnumerable data)
+        public DataExplorer(IEnumerable data)
         {
             Data = data;
         }
