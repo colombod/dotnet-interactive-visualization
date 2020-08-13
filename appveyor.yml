@@ -1,0 +1,37 @@
+version: "1.0.{build}"
+image: Visual Studio 2019
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: "{version}"
+  package_version: "{version}"
+  assembly_version: "{version}"
+  file_version: "{version}"
+  informational_version: "{version}"
+branches:
+  only:
+    - master
+init:
+  # Good practise, because Windows line endings are different from Unix/Linux ones
+  - cmd: git config --global core.autocrlf true
+install:
+  # Install repo specific stuff here
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore Microsoft.DotNet.Interactive.Visualization.sln --verbosity q
+build_script:
+  - cmd: dotnet build Microsoft.DotNet.Interactive.Visualization.sln
+after_build:
+  # For once the build has completed
+  - cmd: dotnet pack src/Microsoft.DotNet.Interactive.nteract.nuget/Microsoft.DotNet.Interactive.nteract.nuget.csproj -o pacakges
+artifacts:
+  - path: "pacakges/**/*.nupkg"
+    name: NugetPacakges
+
+clone_depth: 1
+test_script:
+    - cmd: dotnet test Microsoft.DotNet.Interactive.Visualization.sln
+on_finish:
+  # any cleanup in here
+deploy:
+  
