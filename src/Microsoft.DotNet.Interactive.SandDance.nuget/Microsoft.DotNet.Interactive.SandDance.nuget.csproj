@@ -9,6 +9,7 @@
     <IsPackable>true</IsPackable>
     <PackageDescription>SandDance data explorer for .NET interactive.</PackageDescription>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>0.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
