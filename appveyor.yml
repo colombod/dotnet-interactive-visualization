@@ -1,5 +1,9 @@
 version: "1.0.{build}"
 image: Visual Studio 2019
+
+environment:
+  nodejs_version: "12.18.3"
+
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -16,6 +20,7 @@ init:
   - cmd: git config --global core.autocrlf true
 install:
   # Install repo specific stuff here
+  - ps: Install-Product node $env:nodejs_version
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore Microsoft.DotNet.Interactive.Visualization.sln --verbosity q
