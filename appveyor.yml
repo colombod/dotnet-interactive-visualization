@@ -20,7 +20,7 @@ before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore Microsoft.DotNet.Interactive.Visualization.sln --verbosity q
 build_script:
-  - cmd:dotnet pack src/Microsoft.DotNet.Interactive.nteract.nuget/Microsoft.DotNet.Interactive.nteract.nuget.csproj -o pacakges
+  - cmd: dotnet pack src\Microsoft.DotNet.Interactive.nteract.nuget\Microsoft.DotNet.Interactive.nteract.nuget.csproj -o pacakges
 after_build:
   # For once the build has completed
   # - cmd: dotnet pack src/Microsoft.DotNet.Interactive.nteract.nuget/Microsoft.DotNet.Interactive.nteract.nuget.csproj -o pacakges
