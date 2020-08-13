@@ -41,7 +41,7 @@
   </Target>
 
   <Target Name="CompileTypescript" Inputs="@(TypescriptInputs)" Outputs="@(TypescriptOutputFiles)" DependsOnTargets="InstallNodeModules" BeforeTargets="BeforeBuild" Condition="'$(NCrunch)' != '1' And '$(BuildingInsideVisualStudio)' != 'true'">
-    <Exec Command="npm run build" WorkingDirectory="$(JsApiRoot)" />
+    <Exec ContinueOnError='true' Command="npm run build" WorkingDirectory="$(JsApiRoot)" />
   </Target>
 
 </Project>
