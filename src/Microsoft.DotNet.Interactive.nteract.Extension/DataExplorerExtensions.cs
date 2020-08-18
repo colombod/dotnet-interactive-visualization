@@ -42,14 +42,14 @@ getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
 
         public static void RegisterFormatters()
         {
-            Formatter.Register(
-                typeof(IEnumerable),
+            Formatter.Register<IEnumerable>(
                 (source, writer) =>
                 {
                     if (source.GetType() != typeof(string))
                     {
                         var tabularData = ((IEnumerable)source).ToTabularData();
                         writer.Write(tabularData.ToString());
+                        return true;
                     }
                 },
                 TableFormatter.MimeType
@@ -68,7 +68,7 @@ getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
                 TableFormatter.nteractMimeType
             );
 
-            Formatter<DataExplorer>.Register((explorer, writer) =>
+            Formatter.Register<DataExplorer>((explorer, writer) =>
             {
                 var html = explorer.GenerateHtml();
                 writer.Write(html);
