@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using Assent;
 using FluentAssertions;
+using System.Linq;
 using FluentAssertions.Execution;
 using HtmlAgilityPack;
 using Microsoft.DotNet.Interactive.Formatting;
@@ -18,26 +19,92 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         {
             DataExplorerExtensions.RegisterFormatters();
             _configuration = new Configuration()
-                .SetInteractive(Debugger.IsAttached)
-                .UsingExtension("json");
-
+                             .SetInteractive(Debugger.IsAttached)
+                             .UsingExtension("json");
         }
 
         [Fact]
-        public void can_generate_tabular_json()
+        public void can_generate_tabular_json_from_object_array()
         {
             var data = new[]
             {
-                new {Name = "Q", IsValid =false, Cost=10.0},
-                new {Name = "U", IsValid =false, Cost=5.0},
-                new {Name = "E", IsValid =true, Cost=10.0},
-                new {Name = "S", IsValid =false, Cost=10.0},
-                new {Name = "T", IsValid =false, Cost=10.0}
+                new { Name = "Q", IsValid = false, Cost = 10.0 },
+                new { Name = "U", IsValid = false, Cost = 5.0 },
+                new { Name = "E", IsValid = true, Cost = 10.0 },
+                new { Name = "S", IsValid = false, Cost = 10.0 },
+                new { Name = "T", IsValid = false, Cost = 10.0 }
             };
 
             var formattedData = data.ToTabularData();
 
-            
+            this.Assent(formattedData.ToString(), _configuration);
+        }
+
+        [Fact]
+        public void can_generate_tabular_json_from_sequence_of_sequences_of_ValueTuples()
+        {
+            IEnumerable<IEnumerable<(string name, object value)>> data =
+                new[]
+                {
+                    new (string name, object value)[]
+                    {
+                        ("id", 1),
+                        ("name", "apple"),
+                        ("color", "green"),
+                        ("deliciousness", 10)
+                    },
+                    new (string name, object value)[]
+                    {
+                        ("id", 2),
+                        ("name", "banana"),
+                        ("color", "yellow"),
+                        ("deliciousness", 11)
+                    },
+                    new (string name, object value)[]
+                    {
+                        ("id", 3),
+                        ("name", "cherry"),
+                        ("color", "red"),
+                        ("deliciousness", 9000)
+                    },
+                };
+
+            var formattedData = data.ToTabularData();
+
+            this.Assent(formattedData.ToString(), _configuration);
+        }
+        
+        [Fact]
+        public void can_generate_tabular_json_from_sequence_of_sequences_of_KeyValuePairs()
+        {
+            IEnumerable<IEnumerable<KeyValuePair<string, object>>> data =
+                new[]
+                {
+                    new[]
+                    {
+                        new KeyValuePair<string, object>("id", 1),
+                        new KeyValuePair<string, object>("name", "apple"),
+                        new KeyValuePair<string, object>("color", "green"),
+                        new KeyValuePair<string, object>("deliciousness", 10)
+                    },
+                    new[]
+                    {
+                        new KeyValuePair<string, object>("id", 2),
+                        new KeyValuePair<string, object>("name", "banana"),
+                        new KeyValuePair<string, object>("color", "yellow"),
+                        new KeyValuePair<string, object>("deliciousness", 11)
+                    },
+                    new[]
+                    {
+                        new KeyValuePair<string, object>("id", 3),
+                        new KeyValuePair<string, object>("name", "cherry"),
+                        new KeyValuePair<string, object>("color", "red"),
+                        new KeyValuePair<string, object>("deliciousness", 9000)
+                    },
+                };
+
+            var formattedData = data.ToTabularData();
+
             this.Assent(formattedData.ToString(), _configuration);
         }
 
@@ -46,15 +113,14 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         {
             var data = new[]
             {
-                new {Name = "Q", IsValid =false, Cost=10.0},
-                new {Name = "U", IsValid =false, Cost=5.0},
-                new {Name = "E", IsValid =true, Cost=10.0},
-                new {Name = "S", IsValid =false, Cost=10.0},
-                new {Name = "T", IsValid =false, Cost=10.0}
+                new { Name = "Q", IsValid = false, Cost = 10.0 },
+                new { Name = "U", IsValid = false, Cost = 5.0 },
+                new { Name = "E", IsValid = true, Cost = 10.0 },
+                new { Name = "S", IsValid = false, Cost = 10.0 },
+                new { Name = "T", IsValid = false, Cost = 10.0 }
             };
 
             var formattedData = data.ToDisplayString(TableFormatter.MimeType);
-
 
             this.Assent(formattedData, _configuration);
         }
@@ -64,11 +130,11 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         {
             var data = new[]
             {
-                new {Name = "Q", IsValid =false, Cost=10.0},
-                new {Name = "U", IsValid =false, Cost=5.0},
-                new {Name = "E", IsValid =true, Cost=10.0},
-                new {Name = "S", IsValid =false, Cost=10.0},
-                new {Name = "T", IsValid =false, Cost=10.0}
+                new { Name = "Q", IsValid = false, Cost = 10.0 },
+                new { Name = "U", IsValid = false, Cost = 5.0 },
+                new { Name = "E", IsValid = true, Cost = 10.0 },
+                new { Name = "S", IsValid = false, Cost = 10.0 },
+                new { Name = "T", IsValid = false, Cost = 10.0 }
             };
 
             var explorer = new DataExplorer(data);

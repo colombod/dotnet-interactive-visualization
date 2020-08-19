@@ -35,54 +35,129 @@ namespace Microsoft.DotNet.Interactive.nteract
 
         private static (JObject schema, JArray data) Generate(IEnumerable source)
         {
-            var fields = new JArray();
+            JArray fields = null;
+
+            var members = new HashSet<(string name, Type type)>();
+            var data = new JArray();
+
+            foreach (var item in source)
+            {
+                switch (item)
+                {
+                    case IEnumerable<(string name, object value)> valueTuples:
+
+                        EnsureFieldsAreInitializedFromValueTuples(valueTuples);
+
+                        var o = new JObject();
+                        foreach (var tuple in valueTuples)
+                        {
+                            o.Add(tuple.name, JToken.FromObject(tuple.value ?? "NULL"));
+                        }
+
+                        data.Add(o);
+                        break;
+
+                    case IEnumerable<KeyValuePair<string, object>> keyValuePairs:
+
+                        EnsureFieldsAreInitializedFromKeyValuePairs(keyValuePairs);
+
+                        var obj = new JObject();
+                        foreach (var pair in keyValuePairs)
+                        {
+                            obj.Add(pair.Key, JToken.FromObject(pair.Value));
+                        }
+
+                        data.Add(obj);
+                        break;
+
+                    default:
+                        foreach (var memberInfo in item
+                                                   .GetType()
+                                                   .GetMembers(BindingFlags.Public | BindingFlags.Instance))
+                        {
+                            switch (memberInfo)
+                            {
+                                case PropertyInfo pi:
+                                    members.Add((memberInfo.Name, pi.PropertyType));
+                                    break;
+                                case FieldInfo fi:
+                                    members.Add((memberInfo.Name, fi.FieldType));
+                                    break;
+                            }
+                        }
+
+                        EnsureFieldsAreInitializedFromMembers();
+                        data.Add(JObject.FromObject(item));
+                        break;
+                }
+            }
+
             var schema = new JObject
             {
                 ["primaryKey"] = new JArray(),
                 ["fields"] = fields
             };
 
-            var members = new HashSet<(string name, Type type)>();
-            var data = new JArray();
-            
-            foreach (var item in source)
+            return (schema, data);
+
+            void EnsureFieldsAreInitializedFromMembers()
             {
-                foreach (var memberInfo in item
-                                           .GetType()
-                                           .GetMembers(BindingFlags.Public | BindingFlags.Instance))
+                if (fields is null)
                 {
-                    switch (memberInfo)
+                    fields = new JArray();
+                    foreach (var memberInfo in members)
                     {
-                        case PropertyInfo pi:
-                            members.Add((memberInfo.Name, pi.PropertyType));
-                            break;
+                        fields.Add(new JObject
+                        {
+                            ["name"] = memberInfo.name,
+                            ["type"] = memberInfo.type.ToTableFieldType()
+                        });
                     }
                 }
-
-                data.Add(JObject.FromObject(item));
             }
 
-            foreach (var memberInfo in members)
+            void EnsureFieldsAreInitializedFromValueTuples(IEnumerable<(string name, object value)> valueTuples)
             {
-                fields.Add(new JObject
+                if (fields is null)
                 {
-                    ["name"] = memberInfo.name,
-                    ["type"] = memberInfo.type.ToTableFieldType()
-                });
+                    fields = new JArray();
+                    foreach (var tuple in valueTuples)
+                    {
+                        fields.Add(new JObject
+                        {
+                            ["name"] = tuple.name,
+                            ["type"] = tuple.value?.GetType().ToTableFieldType()
+                        });
+                    }
+                }
             }
 
-            return (schema, data);
+            void EnsureFieldsAreInitializedFromKeyValuePairs(IEnumerable<KeyValuePair<string, object>> keyValuePairs)
+            {
+                if (fields is null)
+                {
+                    fields = new JArray();
+                    foreach (var keyValuePair in keyValuePairs)
+                    {
+                        fields.Add(new JObject
+                        {
+                            ["name"] = keyValuePair.Key,
+                            ["type"] = keyValuePair.Value?.GetType().ToTableFieldType()
+                        });
+                    }
+                }
+            }
         }
 
         private static string ToTableFieldType(this Type type) =>
             type switch
             {
-                { } t when t == typeof(string) => "string",
                 { } t when t == typeof(bool) => "boolean",
                 { } t when t == typeof(DateTime) => "date",
                 { } t when t == typeof(int) => "integer",
+                { } t when t == typeof(long) => "integer",
                 { } t when t == typeof(double) => "number",
-                _ => throw new InvalidOperationException($"Type {type} is not supported.")
+                _ => "string",
             };
     }
 }
