@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using Assent;
 using FluentAssertions;
 using System.Linq;
 using FluentAssertions.Execution;
 using HtmlAgilityPack;
+using Microsoft.Data.SqlClient;
 using Microsoft.DotNet.Interactive.Formatting;
 using Xunit;
 
@@ -109,6 +111,24 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         }
 
         [Fact]
+        public void can_generate_tabular_json_from_database_table_result()
+        {
+            var connectionString = "Persist Security Info=False; Integrated Security=true; Initial Catalog=AdventureWorks2019; Server=localhost";
+
+            using var connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = "SELECT TOP 3 * FROM Production.Product";
+
+            var data = Execute(command);
+
+            var formattedData = data.First().ToTabularData();
+
+            this.Assent(formattedData.ToString(), _configuration);
+        }
+
+        [Fact]
         public void can_format_data()
         {
             var data = new[]
@@ -155,6 +175,34 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         public void Dispose()
         {
             Formatter.ResetToDefault();
+        }
+
+        internal static IEnumerable<IEnumerable<IEnumerable<(string name, object value)>>> Execute(IDbCommand command)
+        {
+            using var reader = command.ExecuteReader();
+
+            do
+            {
+                var values = new object[reader.FieldCount];
+                var names = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToArray();
+
+                // holds the result of a single statement within the query
+                var table = new List<(string, object)[]>();
+
+                while (reader.Read())
+                {
+                    reader.GetValues(values);
+                    var row = new (string, object)[values.Length];
+                    for (var i = 0; i < values.Length; i++)
+                    {
+                        row[i] = (names[i], values[i]);
+                    }
+
+                    table.Add(row);
+                }
+
+                yield return table;
+            } while (reader.NextResult());
         }
     }
 }

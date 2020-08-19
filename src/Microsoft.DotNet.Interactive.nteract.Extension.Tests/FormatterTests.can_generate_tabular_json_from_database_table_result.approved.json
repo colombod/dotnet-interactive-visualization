@@ -1,0 +1,190 @@
+{
+  "schema": {
+    "primaryKey": [],
+    "fields": [
+      {
+        "name": "ProductID",
+        "type": "integer"
+      },
+      {
+        "name": "Name",
+        "type": "string"
+      },
+      {
+        "name": "ProductNumber",
+        "type": "string"
+      },
+      {
+        "name": "MakeFlag",
+        "type": "boolean"
+      },
+      {
+        "name": "FinishedGoodsFlag",
+        "type": "boolean"
+      },
+      {
+        "name": "Color",
+        "type": "string"
+      },
+      {
+        "name": "SafetyStockLevel",
+        "type": "string"
+      },
+      {
+        "name": "ReorderPoint",
+        "type": "string"
+      },
+      {
+        "name": "StandardCost",
+        "type": "string"
+      },
+      {
+        "name": "ListPrice",
+        "type": "string"
+      },
+      {
+        "name": "Size",
+        "type": "string"
+      },
+      {
+        "name": "SizeUnitMeasureCode",
+        "type": "string"
+      },
+      {
+        "name": "WeightUnitMeasureCode",
+        "type": "string"
+      },
+      {
+        "name": "Weight",
+        "type": "string"
+      },
+      {
+        "name": "DaysToManufacture",
+        "type": "integer"
+      },
+      {
+        "name": "ProductLine",
+        "type": "string"
+      },
+      {
+        "name": "Class",
+        "type": "string"
+      },
+      {
+        "name": "Style",
+        "type": "string"
+      },
+      {
+        "name": "ProductSubcategoryID",
+        "type": "string"
+      },
+      {
+        "name": "ProductModelID",
+        "type": "string"
+      },
+      {
+        "name": "SellStartDate",
+        "type": "date"
+      },
+      {
+        "name": "SellEndDate",
+        "type": "string"
+      },
+      {
+        "name": "DiscontinuedDate",
+        "type": "string"
+      },
+      {
+        "name": "rowguid",
+        "type": "string"
+      },
+      {
+        "name": "ModifiedDate",
+        "type": "date"
+      }
+    ]
+  },
+  "data": [
+    {
+      "ProductID": 1,
+      "Name": "Adjustable Race",
+      "ProductNumber": "AR-5381",
+      "MakeFlag": false,
+      "FinishedGoodsFlag": false,
+      "Color": null,
+      "SafetyStockLevel": 1000,
+      "ReorderPoint": 750,
+      "StandardCost": 0.0000,
+      "ListPrice": 0.0000,
+      "Size": null,
+      "SizeUnitMeasureCode": null,
+      "WeightUnitMeasureCode": null,
+      "Weight": null,
+      "DaysToManufacture": 0,
+      "ProductLine": null,
+      "Class": null,
+      "Style": null,
+      "ProductSubcategoryID": null,
+      "ProductModelID": null,
+      "SellStartDate": "2008-04-30T00:00:00",
+      "SellEndDate": null,
+      "DiscontinuedDate": null,
+      "rowguid": "694215b7-08f7-4c0d-acb1-d734ba44c0c8",
+      "ModifiedDate": "2014-02-08T10:01:36.827"
+    },
+    {
+      "ProductID": 2,
+      "Name": "Bearing Ball",
+      "ProductNumber": "BA-8327",
+      "MakeFlag": false,
+      "FinishedGoodsFlag": false,
+      "Color": null,
+      "SafetyStockLevel": 1000,
+      "ReorderPoint": 750,
+      "StandardCost": 0.0000,
+      "ListPrice": 0.0000,
+      "Size": null,
+      "SizeUnitMeasureCode": null,
+      "WeightUnitMeasureCode": null,
+      "Weight": null,
+      "DaysToManufacture": 0,
+      "ProductLine": null,
+      "Class": null,
+      "Style": null,
+      "ProductSubcategoryID": null,
+      "ProductModelID": null,
+      "SellStartDate": "2008-04-30T00:00:00",
+      "SellEndDate": null,
+      "DiscontinuedDate": null,
+      "rowguid": "58ae3c20-4f3a-4749-a7d4-d568806cc537",
+      "ModifiedDate": "2014-02-08T10:01:36.827"
+    },
+    {
+      "ProductID": 3,
+      "Name": "BB Ball Bearing",
+      "ProductNumber": "BE-2349",
+      "MakeFlag": true,
+      "FinishedGoodsFlag": false,
+      "Color": null,
+      "SafetyStockLevel": 800,
+      "ReorderPoint": 600,
+      "StandardCost": 0.0000,
+      "ListPrice": 0.0000,
+      "Size": null,
+      "SizeUnitMeasureCode": null,
+      "WeightUnitMeasureCode": null,
+      "Weight": null,
+      "DaysToManufacture": 1,
+      "ProductLine": null,
+      "Class": null,
+      "Style": null,
+      "ProductSubcategoryID": null,
+      "ProductModelID": null,
+      "SellStartDate": "2008-04-30T00:00:00",
+      "SellEndDate": null,
+      "DiscontinuedDate": null,
+      "rowguid": "9c21aed2-5bfa-4f18-bcb8-f11638dc2e4e",
+      "ModifiedDate": "2014-02-08T10:01:36.827"
+    }
+  ]
+}
