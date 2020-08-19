@@ -18,7 +18,8 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         {
             DataExplorerExtensions.RegisterFormatters();
             _configuration = new Configuration()
-                .SetInteractive(Debugger.IsAttached);
+                .SetInteractive(Debugger.IsAttached)
+                .UsingExtension("json");
 
         }
 
@@ -83,7 +84,6 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
             scripts.InnerText.Should().Contain(data.ToTabularData().ToString());
 
             scripts.InnerText.Should().Contain("getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
-
         }
 
         public void Dispose()

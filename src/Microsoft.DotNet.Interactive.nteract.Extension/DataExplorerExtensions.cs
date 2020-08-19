@@ -43,14 +43,16 @@ getExtensionRequire('nteract','1.0.0')(['nteract/lib'], (nteract) => {");
         public static void RegisterFormatters()
         {
             Formatter.Register<IEnumerable>(
-                (source, writer) =>
+                (_, source, writer) =>
                 {
                     if (source.GetType() != typeof(string))
                     {
-                        var tabularData = ((IEnumerable)source).ToTabularData();
+                        var tabularData = source.ToTabularData();
                         writer.Write(tabularData.ToString());
                         return true;
                     }
+
+                    return false;
                 },
                 TableFormatter.MimeType
             );
