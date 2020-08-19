@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Html;
 using Microsoft.DotNet.Interactive.Formatting;
@@ -49,6 +51,17 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
                 var html = explorer.GenerateHtml();
                 writer.Write(html);
             }, HtmlFormatter.MimeType);
+
+            // this is a formatter for SQL data
+            Formatter.Register
+            <IEnumerable /* tables*/
+                <IEnumerable /* rows */
+                    <IEnumerable /* fields */<(string, object)>>>>((source, writer) =>
+            {
+                // TODO-JOSEQU: (RegisterFormatters) do all the tables...
+
+                writer.Write(new DataExplorer(source.First()).ToDisplayString("text/html"));
+            }, "text/html");
         }
 
         internal static HtmlString GenerateHtml(this DataExplorer dataExplorer)
