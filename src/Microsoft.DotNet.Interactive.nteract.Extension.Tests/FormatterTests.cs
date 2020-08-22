@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using Assent;
 using FluentAssertions;
 using System.Linq;
 using FluentAssertions.Execution;
 using HtmlAgilityPack;
+using Microsoft.Data.Analysis;
 using Microsoft.Data.SqlClient;
 using Microsoft.DotNet.Interactive.Formatting;
 using Xunit;
@@ -129,6 +131,26 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
         }
 
         [Fact]
+        public void can_generate_tabular_json_from_DataFrame()
+        {
+
+            using var stream = new MemoryStream();
+            using var writer = new StreamWriter(stream);
+            writer.AutoFlush = true;
+            writer.Write(@"id,name,color,deliciousness
+1,apple,green,10
+2,banana,yellow,11
+3,cherry,red,9000");
+            stream.Position = 0;
+
+            var dataframe = DataFrame.LoadCsv(stream);
+
+            var formatted = dataframe.ToTabularData();
+
+            this.Assent(formatted.ToString(), _configuration);
+        }
+
+        [Fact]
         public void can_format_data()
         {
             var data = new[]
@@ -157,9 +179,7 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension.Tests
                 new { Name = "T", IsValid = false, Cost = 10.0 }
             };
 
-            var explorer = new DataExplorer(data);
-
-            var formatted = explorer.ToDisplayString(HtmlFormatter.MimeType);
+            var formatted = data.ToTabularData().ToDisplayString(HtmlFormatter.MimeType);
 
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(formatted);

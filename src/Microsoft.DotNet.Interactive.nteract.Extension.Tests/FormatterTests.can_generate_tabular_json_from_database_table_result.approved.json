@@ -24,39 +24,39 @@
       },
       {
         "name": "Color",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "SafetyStockLevel",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "ReorderPoint",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "StandardCost",
-        "type": "string"
+        "type": "number"
       },
       {
         "name": "ListPrice",
-        "type": "string"
+        "type": "number"
       },
       {
         "name": "Size",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "SizeUnitMeasureCode",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "WeightUnitMeasureCode",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "Weight",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "DaysToManufacture",
@@ -64,43 +64,43 @@
       },
       {
         "name": "ProductLine",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "Class",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "Style",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "ProductSubcategoryID",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "ProductModelID",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "SellStartDate",
-        "type": "date"
+        "type": "datetime"
       },
       {
         "name": "SellEndDate",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "DiscontinuedDate",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "rowguid",
-        "type": "string"
+        "type": "any"
       },
       {
         "name": "ModifiedDate",
-        "type": "date"
+        "type": "datetime"
       }
     ]
   },

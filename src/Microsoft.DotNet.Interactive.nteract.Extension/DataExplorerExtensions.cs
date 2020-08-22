@@ -46,9 +46,9 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
                 TableFormatter.nteractMimeType
             );
 
-            Formatter.Register<DataExplorer>((explorer, writer) =>
+            Formatter.Register<TabularJsonString>((explorer, writer) =>
             {
-                var html = explorer.GenerateHtml();
+                var html = explorer.RenderDataExplorer();
                 writer.Write(html);
             }, HtmlFormatter.MimeType);
 
@@ -60,14 +60,15 @@ namespace Microsoft.DotNet.Interactive.nteract.Extension
             {
                 // TODO-JOSEQU: (RegisterFormatters) do all the tables...
 
-                writer.Write(new DataExplorer(source.First()).ToDisplayString("text/html"));
+                writer.Write(source.First()
+                                   .ToTabularData()
+                                   .ToDisplayString("text/html"));
             }, "text/html");
         }
 
-        internal static HtmlString GenerateHtml(this DataExplorer dataExplorer)
+        internal static HtmlString RenderDataExplorer(this TabularJsonString data)
         {
             var divId = Guid.NewGuid().ToString("N");
-            var data = dataExplorer.Data.ToTabularData().ToString();
             var code = new StringBuilder();
             code.AppendLine("<div>");
             code.AppendLine($"<div id=\"{divId}\" style=\"height: 100ch ;margin: 2px;\">");

@@ -5,8 +5,12 @@
     <RootNamespace>Microsoft.DotNet.Interactive.nteract</RootNamespace>
     <AssemblyName>Microsoft.DotNet.Interactive.nteract</AssemblyName>
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="c:\dev\interactive\src\Microsoft.DotNet.Interactive\Microsoft.DotNet.Interactive.csproj"  />
+    <PackageReference Include="Microsoft.ML.DataView" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="c:\dev\interactive\src\Microsoft.DotNet.Interactive\Microsoft.DotNet.Interactive.csproj" />
     <ProjectReference Include="c:\dev\interactive\src\Microsoft.DotNet.Interactive.Formatting\Microsoft.DotNet.Interactive.Formatting.csproj" />
 
   </ItemGroup>
